@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>co.com.gsdd</groupId>
 	<artifactId>validator-util</artifactId>
-	<version>1.0.001</version>
+	<version>1.1.001</version>
 	<packaging>jar</packaging>
 
 	<organization>
@@ -17,7 +17,7 @@
 		<project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
 		<project.build.targetEncoding>${project.encoding}</project.build.targetEncoding>
 		<project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
+		<java.version>13</java.version>
 		
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
@@ -43,8 +43,8 @@
 		<!-- test dependencies -->
 		<junit.version>5.5.2</junit.version>
 		<!-- internal dependencies -->
-		<constant-util.version>1.0.001</constant-util.version>
-		<exception-util.version>1.0.001</exception-util.version>
+		<constant-util.version>1.1.001</constant-util.version>
+		<exception-util.version>1.1.001</exception-util.version>
 	</properties>
 
 	<dependencies>

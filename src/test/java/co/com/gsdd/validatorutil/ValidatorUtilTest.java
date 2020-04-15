@@ -2,7 +2,6 @@ package co.com.gsdd.validatorutil;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -49,8 +48,7 @@ public class ValidatorUtilTest {
 
     private static Stream<Arguments> getNullOrEmptyFalseInputs() {
         List<String> ls = Arrays.asList(A);
-        Map<String, String> map = new HashMap<>();
-        map.put(A, A);
+        Map<String, String> map = Map.of(A, A);
         byte[] byteArr = { (byte) 0xe0 };
         return Stream.of(Arguments.of(GralConstants.DOT), Arguments.of(" a"), Arguments.of(ls), Arguments.of(map),
                 Arguments.of(byteArr), Arguments.of(new int[0]));
