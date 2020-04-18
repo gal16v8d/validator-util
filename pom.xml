@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>co.com.gsdd</groupId>
 	<artifactId>validator-util</artifactId>
-	<version>1.1.001</version>
+	<version>2.0.001</version>
 	<packaging>jar</packaging>
 
 	<organization>
@@ -43,8 +43,8 @@
 		<!-- test dependencies -->
 		<junit.version>5.5.2</junit.version>
 		<!-- internal dependencies -->
-		<constant-util.version>1.1.001</constant-util.version>
-		<exception-util.version>1.1.001</exception-util.version>
+		<constant-util.version>2.0.001</constant-util.version>
+		<exception-util.version>2.0.001</exception-util.version>
 	</properties>
 
 	<dependencies>
