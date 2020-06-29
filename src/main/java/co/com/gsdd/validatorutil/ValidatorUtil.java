@@ -54,7 +54,7 @@ public final class ValidatorUtil {
     public static boolean multiAnd(boolean... operands) {
         Boolean resultAnd = true;
         if (!ValidatorUtil.isNullOrEmpty(operands)) {
-            for (Boolean oper : operands) {
+            for (boolean oper : operands) {
                 if (!oper) {
                     resultAnd = oper;
                     break;
@@ -67,7 +67,7 @@ public final class ValidatorUtil {
     public static boolean multiOr(boolean... operands) {
         Boolean resultOr = false;
         if (!ValidatorUtil.isNullOrEmpty(operands)) {
-            for (Boolean oper : operands) {
+            for (boolean oper : operands) {
                 if (oper) {
                     resultOr = oper;
                     break;
