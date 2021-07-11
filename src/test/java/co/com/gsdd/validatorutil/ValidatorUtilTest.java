@@ -18,14 +18,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import co.com.gsdd.constants.GralConstants;
 
-public class ValidatorUtilTest {
+class ValidatorUtilTest {
 
     private static final String A = "a";
 
     @DisplayName("isNullOrEmpty true tests")
     @ParameterizedTest(name = "Using input = {0} should be true")
     @MethodSource("getNullOrEmptyTrueInputs")
-    public void isNullOrEmptyTrueTest(Object input) {
+    void isNullOrEmptyTrueTest(Object input) {
         Assertions.assertTrue(ValidatorUtil.isNullOrEmpty(input));
     }
 
@@ -36,14 +36,14 @@ public class ValidatorUtilTest {
 
     @DisplayName("isNullOrEmpty with Object array true tests")
     @Test
-    public void isNullOrEmptyObjectArrayTrueTest() {
+    void isNullOrEmptyObjectArrayTrueTest() {
         Assertions.assertTrue(ValidatorUtil.isNullOrEmpty(new Object[0]));
     }
 
     @DisplayName("isNullOrEmpty true tests")
     @ParameterizedTest(name = "Using input = {0} should be false")
     @MethodSource("getNullOrEmptyFalseInputs")
-    public void isNullOrEmptyFalseTest(Object input) {
+    void isNullOrEmptyFalseTest(Object input) {
         Assertions.assertFalse(ValidatorUtil.isNullOrEmpty(input));
     }
 
@@ -58,7 +58,7 @@ public class ValidatorUtilTest {
 
     @DisplayName("isNullOrEmpty with Object array false tests")
     @Test
-    public void isNullOrEmptyObjectArrayFalseTest() {
+    void isNullOrEmptyObjectArrayFalseTest() {
         Object[] objArr = { A };
         Assertions.assertFalse(ValidatorUtil.isNullOrEmpty(objArr));
     }
@@ -66,7 +66,7 @@ public class ValidatorUtilTest {
     @DisplayName("isDecimal true tests")
     @ParameterizedTest(name = "Using input = {0} should be true")
     @ValueSource(strings = { "1", "1.9" })
-    public void isDecimalTrueTest(String input) {
+    void isDecimalTrueTest(String input) {
         Assertions.assertTrue(ValidatorUtil.isDecimal(input));
     }
 
@@ -74,14 +74,14 @@ public class ValidatorUtilTest {
     @ParameterizedTest(name = "Using input = {0} should be false")
     @NullAndEmptySource
     @ValueSource(strings = { "1.", "1,", "l" })
-    public void isDecimalFalseTest(String input) {
+    void isDecimalFalseTest(String input) {
         Assertions.assertFalse(ValidatorUtil.isDecimal(input));
     }
 
     @DisplayName("isInteger true tests")
     @ParameterizedTest(name = "Using input = {0} should be true")
     @ValueSource(strings = { "1", "2", "3" })
-    public void isIntegerTrueTest(String input) {
+    void isIntegerTrueTest(String input) {
         Assertions.assertTrue(ValidatorUtil.isInteger(input));
     }
 
@@ -89,14 +89,14 @@ public class ValidatorUtilTest {
     @ParameterizedTest(name = "Using input = {0} should be false")
     @NullAndEmptySource
     @ValueSource(strings = { "1.5", "2d", "l", "1." })
-    public void isIntegerFalseTest(String input) {
+    void isIntegerFalseTest(String input) {
         Assertions.assertFalse(ValidatorUtil.isInteger(input));
     }
 
     @DisplayName("multiAnd false tests")
     @ParameterizedTest(name = "Using input = {0} should be false")
     @MethodSource("getMultiAndFalseInputs")
-    public void multiAndFalseTest(boolean[] input) {
+    void multiAndFalseTest(boolean[] input) {
         Assertions.assertFalse(ValidatorUtil.multiAnd(input));
     }
 
@@ -110,7 +110,7 @@ public class ValidatorUtilTest {
     @DisplayName("multiAnd true tests")
     @ParameterizedTest(name = "Using input = {0} should be true")
     @MethodSource("getMultiAndTrueInputs")
-    public void multiAndTrueTest(boolean[] input) {
+    void multiAndTrueTest(boolean[] input) {
         Assertions.assertTrue(ValidatorUtil.multiAnd(input));
     }
 
@@ -122,7 +122,7 @@ public class ValidatorUtilTest {
     @DisplayName("multiOr false tests")
     @ParameterizedTest(name = "Using input = {0} should be false")
     @MethodSource("getMultiOrFalseInputs")
-    public void multiOrFalseTest(boolean[] input) {
+    void multiOrFalseTest(boolean[] input) {
         Assertions.assertFalse(ValidatorUtil.multiOr(input));
     }
 
@@ -134,7 +134,7 @@ public class ValidatorUtilTest {
     @DisplayName("multiOr true tests")
     @ParameterizedTest(name = "Using input = {0} should be true")
     @MethodSource("getMultiOrTrueInputs")
-    public void multiOrTrueTest(boolean[] input) {
+    void multiOrTrueTest(boolean[] input) {
         Assertions.assertTrue(ValidatorUtil.multiOr(input));
     }
 
