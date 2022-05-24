@@ -1,5 +1,6 @@
 package com.gsdd.validatorutil;
 
+import com.gsdd.constants.GralConstants;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,7 +15,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import com.gsdd.constants.GralConstants;
 
 class ValidatorUtilTest {
 
@@ -28,8 +28,12 @@ class ValidatorUtilTest {
   }
 
   private static Stream<Arguments> getNullOrEmptyTrueInputs() {
-    return Stream.of(null, Arguments.of(GralConstants.EMPTY), Arguments.of(" "),
-        Arguments.of(Collections.emptyList()), Arguments.of(Collections.emptyMap()),
+    return Stream.of(
+        null,
+        Arguments.of(GralConstants.EMPTY),
+        Arguments.of(" "),
+        Arguments.of(Collections.emptyList()),
+        Arguments.of(Collections.emptyMap()),
         Arguments.of(new byte[0]));
   }
 
@@ -51,8 +55,13 @@ class ValidatorUtilTest {
     Map<String, String> map = new HashMap<>();
     map.put(A, A);
     byte[] byteArr = {(byte) 0xe0};
-    return Stream.of(Arguments.of(GralConstants.DOT), Arguments.of(" a"), Arguments.of(ls),
-        Arguments.of(map), Arguments.of(byteArr), Arguments.of(new int[0]));
+    return Stream.of(
+        Arguments.of(GralConstants.DOT),
+        Arguments.of(" a"),
+        Arguments.of(ls),
+        Arguments.of(map),
+        Arguments.of(byteArr),
+        Arguments.of(new int[0]));
   }
 
   @DisplayName("isNullOrEmpty with Object array false tests")
@@ -143,5 +152,4 @@ class ValidatorUtilTest {
     boolean[] a3 = {true, true, false};
     return Stream.of(Arguments.of(a1), Arguments.of(a2), Arguments.of(a3));
   }
-
 }

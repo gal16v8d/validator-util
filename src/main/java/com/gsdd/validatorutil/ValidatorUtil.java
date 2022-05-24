@@ -1,11 +1,11 @@
 package com.gsdd.validatorutil;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import com.gsdd.constants.GralConstants;
 import com.gsdd.constants.NumericConstants;
 import com.gsdd.constants.RegexConstants;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -75,5 +75,4 @@ public final class ValidatorUtil {
     }
     return resultOr;
   }
-
 }
