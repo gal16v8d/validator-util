@@ -6,22 +6,25 @@ import com.gsdd.constants.RegexConstants;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import java.util.regex.Pattern;
+import lombok.experimental.UtilityClass;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public final class ValidatorUtil {
+
+  public static final Pattern NUMBER_PATTERN = Pattern.compile(RegexConstants.NUMBER);
+  public static final Pattern DECIMAL_PATTERN = Pattern.compile(RegexConstants.DECIMAL);
 
   public static boolean isNullOrEmpty(final Object obj) {
     boolean result = false;
     if (obj == null) {
       result = true;
-    } else if (obj instanceof String) {
-      result = GralConstants.EMPTY.equals(((String) obj).trim());
-    } else if (obj instanceof List<?>) {
-      result = ((List<?>) obj).isEmpty();
-    } else if (obj instanceof Map<?, ?>) {
-      result = ((Map<?, ?>) obj).isEmpty();
+    } else if (obj instanceof String data) {
+      result = GralConstants.EMPTY.equals(data.trim());
+    } else if (obj instanceof List<?> dataList) {
+      result = dataList.isEmpty();
+    } else if (obj instanceof Map<?, ?> dataMap) {
+      result = dataMap.isEmpty();
     } else {
       result = isArrayEmpty(obj);
     }
@@ -32,22 +35,20 @@ public final class ValidatorUtil {
     // data types boolean[], byte[], short[], char[], int[], long[], float[],
     // double[], Object[]
     Boolean result = false;
-    if (o instanceof Object[]) {
-      Object[] array = (Object[]) o;
+    if (o instanceof Object[] array) {
       result = array.length == NumericConstants.ZERO;
-    } else if (o instanceof byte[]) {
-      byte[] array = (byte[]) o;
-      result = array.length == NumericConstants.ZERO;
+    } else if (o instanceof byte[] byteArray) {
+      result = byteArray.length == NumericConstants.ZERO;
     }
     return result;
   }
 
   public static boolean isDecimal(final String str) {
-    return Optional.ofNullable(str).map(s -> s.matches(RegexConstants.DECIMAL)).orElse(false);
+    return Optional.ofNullable(str).map(s -> DECIMAL_PATTERN.matcher(s).matches()).orElse(false);
   }
 
   public static boolean isInteger(final String str) {
-    return Optional.ofNullable(str).map(s -> s.matches(RegexConstants.NUMBER)).orElse(false);
+    return Optional.ofNullable(str).map(s -> NUMBER_PATTERN.matcher(s).matches()).orElse(false);
   }
 
   public static boolean multiAnd(boolean... operands) {
