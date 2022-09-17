@@ -74,31 +74,31 @@ class ValidatorUtilTest {
   @DisplayName("isDecimal true tests")
   @ParameterizedTest(name = "Using input = {0} should be true")
   @ValueSource(strings = {"1", "1.9"})
-  void isDecimalTrueTest(String input) {
-    Assertions.assertTrue(ValidatorUtil.isDecimal(input));
+  void testIsDecimalTrue(String input) {
+    Assertions.assertTrue(ValidatorUtil.IS_DECIMAL.test(input));
   }
 
   @DisplayName("isDecimal false tests")
   @ParameterizedTest(name = "Using input = {0} should be false")
   @NullAndEmptySource
   @ValueSource(strings = {"1.", "1,", "l"})
-  void isDecimalFalseTest(String input) {
-    Assertions.assertFalse(ValidatorUtil.isDecimal(input));
+  void testIsDecimalFalse(String input) {
+    Assertions.assertFalse(ValidatorUtil.IS_DECIMAL.test(input));
   }
 
   @DisplayName("isInteger true tests")
   @ParameterizedTest(name = "Using input = {0} should be true")
   @ValueSource(strings = {"1", "2", "3"})
-  void isIntegerTrueTest(String input) {
-    Assertions.assertTrue(ValidatorUtil.isInteger(input));
+  void testIsIntegerTrue(String input) {
+    Assertions.assertTrue(ValidatorUtil.IS_INTEGER.test(input));
   }
 
   @DisplayName("isInteger false tests")
   @ParameterizedTest(name = "Using input = {0} should be false")
   @NullAndEmptySource
   @ValueSource(strings = {"1.5", "2d", "l", "1."})
-  void isIntegerFalseTest(String input) {
-    Assertions.assertFalse(ValidatorUtil.isInteger(input));
+  void testIsIntegerFalse(String input) {
+    Assertions.assertFalse(ValidatorUtil.IS_INTEGER.test(input));
   }
 
   @DisplayName("multiAnd false tests")

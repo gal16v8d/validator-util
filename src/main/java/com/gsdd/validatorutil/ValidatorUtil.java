@@ -6,6 +6,7 @@ import com.gsdd.constants.RegexConstants;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import lombok.experimental.UtilityClass;
 
@@ -14,6 +15,12 @@ public final class ValidatorUtil {
 
   public static final Pattern NUMBER_PATTERN = Pattern.compile(RegexConstants.NUMBER);
   public static final Pattern DECIMAL_PATTERN = Pattern.compile(RegexConstants.DECIMAL);
+
+  public static final Predicate<String> IS_DECIMAL =
+      str -> Optional.ofNullable(str).map(s -> DECIMAL_PATTERN.matcher(s).matches()).orElse(false);
+
+  public static final Predicate<String> IS_INTEGER =
+      str -> Optional.ofNullable(str).map(s -> NUMBER_PATTERN.matcher(s).matches()).orElse(false);
 
   public static boolean isNullOrEmpty(final Object obj) {
     boolean result = false;
@@ -41,14 +48,6 @@ public final class ValidatorUtil {
       result = byteArray.length == NumericConstants.ZERO;
     }
     return result;
-  }
-
-  public static boolean isDecimal(final String str) {
-    return Optional.ofNullable(str).map(s -> DECIMAL_PATTERN.matcher(s).matches()).orElse(false);
-  }
-
-  public static boolean isInteger(final String str) {
-    return Optional.ofNullable(str).map(s -> NUMBER_PATTERN.matcher(s).matches()).orElse(false);
   }
 
   public static boolean multiAnd(boolean... operands) {
